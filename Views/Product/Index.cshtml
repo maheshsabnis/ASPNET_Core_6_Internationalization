@@ -1,0 +1,65 @@
+﻿@using Microsoft.AspNetCore.Builder
+@using Microsoft.AspNetCore.Http.Features
+@using Microsoft.AspNetCore.Localization
+@using Microsoft.AspNetCore.Mvc.Localization
+@using Microsoft.Extensions.Options
+
+@inject IViewLocalizer Localizer
+@inject IOptions<RequestLocalizationOptions> LocOptions
+@model IEnumerable<Core6_Internationalization.Models.Product>
+
+@{
+    ViewData["Title"] = Localizer["Index"];
+}
+
+<h1>@Localizer["Index"]</h1>
+
+<p>
+    <a asp-action="Create">@Localizer["Create New"]</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Localizer["ProductId"]
+            </th>
+            <th>
+                @Localizer["ProductName"]
+            </th>
+            <th>
+                @Localizer["CategoryName"]
+            </th>
+            <th>
+                @Localizer["Manufacturer"]
+            </th>
+            <th>
+                @Localizer["Price"]
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProductId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProductName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CategoryName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Manufacturer)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
